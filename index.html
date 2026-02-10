@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RupeeFX Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-icon">MP</div>
+        <div class="brand-copy">
+          <div class="brand">MarketPulse Exchange</div>
+          <small>Macro intelligence for currency markets</small>
+        </div>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <button class="nav-tab active" data-target="markets">Markets</button>
+        <button class="nav-tab" data-target="calendar">Economic Calendar</button>
+        <button class="nav-tab" data-target="analysis">News Desk</button>
+        <button class="nav-tab" data-target="charts">Workspace</button>
+        <button class="nav-tab" data-target="cot">Engines</button>
+        <button class="nav-tab" data-target="community">Forums</button>
+        <button class="nav-tab" data-target="backtest">Analytics</button>
+        <button class="nav-tab" data-target="journal">Journal</button>
+      </nav>
+
+      <div class="utility-bar">
+        <button class="btn ghost">Sign in</button>
+        <button class="btn">Create account</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">INSTITUTIONAL-GRADE SIGNAL FLOW</p>
+          <h1>Track macro catalysts in real time and execute with precision.</h1>
+          <p class="hero-copy">
+            RupeeFX Terminal is a forex-first intelligence hub with synchronized economic events,
+            curated commentary, and a disciplined workflow for Indian forex and gold traders.
+          </p>
+          <div class="hero-actions">
+            <button class="btn">Start free trial</button>
+            <button class="btn ghost">Request enterprise demo</button>
+          </div>
+          <div class="stats">
+            <div><strong>48K+</strong><small>Monthly macro updates</small></div>
+            <div><strong>97%</strong><small>Event coverage within 30s</small></div>
+            <div><strong>61%</strong><small>Gold desk hit-rate (last 90d)</small></div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <article class="brief-card">
+            <h3>Today's critical releases</h3>
+            <small>Auto-weighted by expected volatility</small>
+            <ul class="list-feed tight">
+              <li><span class="tag high">High</span> US Core CPI · 13:30 UTC · Consensus 0.3%</li>
+              <li><span class="tag med">Med</span> ECB Rate Decision · 12:45 UTC · 4.25%</li>
+              <li><span class="tag high">High</span> UK Employment Report · 06:00 UTC · 4.2%</li>
+            </ul>
+          </article>
+          <article class="brief-card">
+            <h3>Flow sentiment</h3>
+            <small>Composite of desk positioning</small>
+            <div class="sentiment-grid">
+              <div><strong>+18</strong><span>USD momentum</span></div>
+              <div><strong>-9</strong><span>EUR risk skew</span></div>
+              <div><strong>+13</strong><span>Gold impulse</span></div>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="content-area">
+        <section class="status-bar">
+          <div><strong>Engine:</strong> <span id="engine-status" class="ok">Operational</span></div>
+          <div><strong>Session:</strong> London Open</div>
+          <div><strong>Pinned:</strong> XAUUSD, EURUSD, GBPUSD, USDINR</div>
+          <div><strong>Latency:</strong> 79ms</div>
+        </section>
+
+        <section id="markets" class="tab-panel active" aria-label="Markets panel">
+          <div class="panel-grid two-col">
+            <article class="panel">
+              <header>
+                <h2>Live Markets Board</h2>
+                <input id="search" type="search" placeholder="Search pairs, news, strategies" />
+              </header>
+              <table>
+                <thead>
+                  <tr><th>Pair</th><th>Last</th><th>Change</th><th>Volatility</th><th>Session Bias</th></tr>
+                </thead>
+                <tbody id="markets-table"></tbody>
+              </table>
+            </article>
+            <article class="panel">
+              <header><h2>Correlation Matrix</h2></header>
+              <div id="correlation-grid" class="matrix"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="charts" class="tab-panel" aria-label="Charts panel">
+          <div class="panel-grid two-col">
+            <article class="panel">
+              <header>
+                <h2>Multi-Chart Layout</h2>
+                <div class="chip-row">
+                  <span class="chip">4 Panels</span>
+                  <span class="chip">MTF Sync</span>
+                  <span class="chip">Drawing Set A</span>
+                </div>
+              </header>
+              <div class="chart-grid" id="chart-grid"></div>
+            </article>
+            <article class="panel">
+              <header><h2>Signal + Pattern Feed</h2></header>
+              <ul id="signal-feed" class="list-feed"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="analysis" class="tab-panel" aria-label="Analysis panel">
+          <article class="panel"><header><h2>Analyst Desk</h2></header><div id="analysis-cards" class="card-grid"></div></article>
+        </section>
+
+        <section id="calendar" class="tab-panel" aria-label="Calendar panel">
+          <article class="panel">
+            <header><h2>Economic Calendar</h2></header>
+            <table>
+              <thead><tr><th>Time</th><th>Country</th><th>Event</th><th>Impact</th><th>Actual / Forecast</th></tr></thead>
+              <tbody id="calendar-table"></tbody>
+            </table>
+          </article>
+        </section>
+
+        <section id="cot" class="tab-panel" aria-label="COT panel">
+          <div class="panel-grid two-col">
+            <article class="panel">
+              <header><h2>COT Positioning Ledger</h2></header>
+              <table>
+                <thead><tr><th>Instrument</th><th>Net Spec</th><th>WoW</th><th>Z-Score</th><th>Signal</th></tr></thead>
+                <tbody id="cot-table"></tbody>
+              </table>
+            </article>
+            <article class="panel"><header><h2>Macro Factors</h2></header><div id="macro-feed" class="stack"></div></article>
+          </div>
+        </section>
+
+        <section id="backtest" class="tab-panel" aria-label="Backtesting panel">
+          <div class="panel-grid two-col">
+            <article class="panel">
+              <header><h2>Backtest Runner</h2></header>
+              <form id="backtest-form" class="form-grid">
+                <label>Strategy<select><option>London Breakout</option><option>Gold Mean Reversion</option><option>DXY Divergence</option></select></label>
+                <label>Pair<select><option>XAUUSD</option><option>EURUSD</option><option>GBPJPY</option></select></label>
+                <label>Period<select><option>2021-2025</option><option>2018-2025</option><option>Custom</option></select></label>
+                <button class="btn" type="submit">Run Simulation</button>
+              </form>
+              <p id="backtest-result" class="muted">No run started yet.</p>
+            </article>
+            <article class="panel"><header><h2>Recent Runs</h2></header><ul id="backtest-runs" class="list-feed"></ul></article>
+          </div>
+        </section>
+
+        <section id="journal" class="tab-panel" aria-label="Journal panel">
+          <div class="panel-grid two-col">
+            <article class="panel">
+              <header><h2>Trade Journal Entry</h2></header>
+              <form id="journal-form" class="form-grid">
+                <label>Pair<input name="pair" required placeholder="e.g. XAUUSD" /></label>
+                <label>Setup<input name="setup" required placeholder="Breakout + retest" /></label>
+                <label>R Multiple<input name="r" required type="number" step="0.1" placeholder="1.8" /></label>
+                <label>Notes<textarea name="notes" rows="3" placeholder="What went right or wrong"></textarea></label>
+                <button class="btn" type="submit">Save Journal</button>
+              </form>
+            </article>
+            <article class="panel"><header><h2>Recent Journal Logs</h2></header><ul id="journal-list" class="list-feed"></ul></article>
+          </div>
+        </section>
+
+        <section id="community" class="tab-panel" aria-label="Community panel">
+          <div class="panel-grid two-col">
+            <article class="panel"><header><h2>Pair Discussion Rooms</h2></header><div id="rooms" class="stack"></div></article>
+            <article class="panel">
+              <header><h2>Desk Announcements</h2></header>
+              <ul class="list-feed">
+                <li>Gold Desk: CPI risk protocol for tonight.</li>
+                <li>Macro Team: USD liquidity monitor upgraded.</li>
+                <li>Moderator: Journal challenge week starts Monday.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
